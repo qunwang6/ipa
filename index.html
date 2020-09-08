@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="minimal-ui,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title></title>
+    <!-- <link rel="shortcut icon" href="/templates/images/bitbug_favicon.ico"/> -->
+    <link rel="stylesheet" href="assets/stylesheets/b07a0166.download.css"/>
+    <link rel="stylesheet" href="icon/iconfont.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.rotate.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="layer/layer.js"></script>
+		
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .weixin-tip {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            filter: alpha(opacity=80);
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .weixin-tip p {
+            text-align: center;
+            margin-top: 10%;
+            padding: 0 5%;
+        }
+    </style>
+</head>
+<body class="app">
+<div class="masklayer" id="MaskLayer" style="display:none"></div>
+<span class="pattern left">
+    <img src="images/pattern_left.png"/>
+</span>
+<span class="pattern right">
+<img src="images/pattern_right.png"/>
+</span>
+<div class="wechat_tip_content"></div>
+<div class="out-container">
+    <div  class="main">
+        <header itemscope="" itemtype="http://schema.org/SoftwareApplication">
+            <div class="table-container">
+                <div class="cell-container">
+                    <div class="app-brief">
+                        <div class="icon-container wrapper">
+                            <i class="icon-icon_path bg-path"></i>
+                            <span class="icon">
+                                <img id="app_icon" src="icon.png" itemprop="image"/>
+                            </span>
+                            <div id="qrcode" style="display: none"></div>
+                            <span class="qrcode" title="">
+                                <!--<canvas width="200" height="200" ></canvas>-->
+                                <!--<img alt="Scan me!" src=""/>-->
+
+                            </span>
+                            <span class="qrcode"><img src="https://qrickit.com/api/qr.php?d=https://qunwang6.gitee.io/ipa"></span>
+                        </div>
+
+                        <p class="release-type wrapper"></p>
+
+                        <h1 class="name wrapper">
+                        <span class="icon-warp">
+                            <i id="os" class="iconfont icon-ios"></i>
+                            <a>App</a>
+                        </span>
+
+                        </h1>
+                        <p class="scan-tips">扫描二维码下载<br/></p>
+                        <div class="release-info">
+                            <p><span id="version_filesize" itemprop="softwareVersion"
+                                     th:text="${pkgInfo.appVersion+' (build) - '+(pkgInfo.pkgFileSize/(1024*1024))+'M'}"></span>
+                            </p>
+                            <!--
+                            <p>更新于: <span th:text="${#dates.format(pkgInfo.updateTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-05 01:00:00</span>
+                            </p>
+                            -->
+                        </div>
+                        <!-- <input id="plistUrl" type="hidden"/>
+                        <input id="ossUrl" type="hidden"/>
+                        <a data-toggle="modal" onclick="install_warn();" href="javascript:void(0)"
+                           style="color: #1abc9c;"><i class="fa fa-hand-o-right" aria-hidden="true"
+                                                      style="padding-right:5px;"></i>"未受信任的企业级开发者"的解决办法</a> -->
+                        <div id="actions" class="actions type-ios">
+                            <button onclick="pkg_install()">下载安装</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div class="weixin-tip">
+    <p>
+        <img id="Android_tips" style="display: none" src="images/weixin1.png" alt="微信打开"/>
+        <img id="iOS_tips" style="display: none" src="images/weixin2.png" alt="微信打开"/>
+    </p>
+</div>
+
+</body>
+<script src="js/yran.js"></script>
+<script type="application/javascript">
+	function pkg_install(){
+		window.location.href = "itms-services://?action=download-manifest&url=https://gitee.com/qunwang6/ipa/raw/master/app.plist"
+	}
+</script>
+</html>
