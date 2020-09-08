@@ -11,19 +11,19 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>http://192.168.111.57:8000/app.ipa</string>
+					<string>https://github.com/qunwang6/ipa/raw/master/app.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>display-image</string>
 					<key>url</key>
-					<string>https://gitee.com/qunwang6/ipa/raw/master/icon.png</string>
+					<string>https://github.com/qunwang6/ipa/raw/master/icon.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>full-size-image</string>
 					<key>url</key>
-					<string>https://gitee.com/qunwang6/ipa/raw/master/icon.png</string>
+					<string>https://github.com/qunwang6/ipa/raw/master/icon.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
